@@ -41,7 +41,7 @@ public class Empleado {
             setPrima(Prima.P4);
             return Prima.P4;
         }
-        throw new RuntimeException();
+        else throw new RuntimeException();
     }
 
 
@@ -54,7 +54,7 @@ public class Empleado {
                 return;
             }
         }
-        throw new NumeroEmpleadoException();
+        else throw new NumeroEmpleadoException();
 //        String numeroCeros = String.valueOf(obj.format("%05d", numero));
     }
 
@@ -66,7 +66,7 @@ public class Empleado {
                 return;
             }
         }
-        throw new NombreEmpleadoException();
+        else throw new NombreEmpleadoException();
     }
 
     public void estableceMesesTrabajo(String mesesT) throws MesesTrabajoException {
@@ -74,11 +74,11 @@ public class Empleado {
         if (mesesT.matches("^\\d+$")){
             n= Integer.parseInt(mesesT);
             if (n>=000 && n < 1000 ){
-                setNumeroEmpleado(n);
+                setMesesTrabajo(n);
                 return;
             }
         }
-        throw new MesesTrabajoException();
+        else throw new MesesTrabajoException();
     }
 
     public void establecerSerDirectivo(String directivo) throws CargoException {
@@ -86,11 +86,13 @@ public class Empleado {
         if (directivo.length()==1){
             if (caracter[0] == '+' ){
                 setDirectivo(true);
+                return;
             }else if(caracter[0]=='-'){
                 setDirectivo(false);
+                return;
             }
         }
-        throw new CargoException();
+        else throw new CargoException();
     }
 
     public int getNumeroEmpleado() {
